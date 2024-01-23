@@ -1,0 +1,16 @@
+{% load static %}
+{% include 'partials/header.html' %}
+
+        {% if user.is_authenticated %}
+        <p><b> Você está logado como {{ user.username }}</b></p>
+        {% endif %}
+
+    {% block main %}
+
+
+
+
+
+    {% endblock%}
+
+{% include 'partials/footer.html' %}
