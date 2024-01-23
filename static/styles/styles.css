@@ -1,3 +1,27 @@
 .nav-link{
     color: white !important;
 }
+
+#sobre-retiro{
+    margin:90px;
+    width: 70%;
+
+}
+
+#para-casais{
+     display: flex;
+    margin:90px;
+    width: 70%;
+}
+
+#para-Solteiros{
+    display: flex;
+    margin:90px;
+    width: 70%;
+    gap: 2%;
+}
+
+    .imagens{
+       flex-direction: column;
+       gap: 5%;
+    }
