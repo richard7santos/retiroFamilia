@@ -1,11 +1,14 @@
 from typing import Any
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.models import User, Group
 from core.forms import UserForm
+from user_profile.models import UserProfile
 from django.shortcuts import get_object_or_404
 
 class UserCreate(CreateView):
@@ -18,6 +21,8 @@ class UserCreate(CreateView):
         url = super().form_valid(form)
         self.object.groups.add(group)
         self.object.save()
+        UserProfile.objects.create(usuario=self.object)
+        
         return url
         
     def get_context_data(self, *args, **kwargs: Any):
@@ -30,3 +35,22 @@ class UserCreate(CreateView):
 
 def home(request):
     return render(request, 'index.html')
+
+class UserProfileUpdate(UpdateView):
+    template_name = 'partials/forms.html'
+    model = UserProfile
+    fields = ['nome_completo', 'telefone', 'foto']
+    success_url = reverse_lazy('home')
+
+    def get_object(self, queryset= None):
+        self.object = get_object_or_404(UserProfile, usuario = self.request.user)
+        return self.object
+    
+    def get_context_data(self, *args, **kwargs: Any):
+        context = super().get_context_data( *args, **kwargs)
+
+        context['title'] = "Meus dados"
+        context['button'] = "Atualizar"
+
+        return context
+        

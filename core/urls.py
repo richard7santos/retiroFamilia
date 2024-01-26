@@ -20,13 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
-from core.views import UserCreate, home
+from core.views import UserCreate, UserProfileUpdate, home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', UserCreate.as_view(), name='registrar'),
+    path('register/', UserCreate.as_view(), name='register'),
+    path('update/', UserProfileUpdate.as_view(), name='update'),
 
     path('', home, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
