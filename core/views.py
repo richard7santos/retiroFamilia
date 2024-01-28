@@ -10,6 +10,7 @@ from django.contrib.auth.models import User, Group
 from core.forms import UserForm
 from user_profile.models import UserProfile
 from django.shortcuts import get_object_or_404
+from django.contrib.auth import logout
 
 class UserCreate(CreateView):
     template_name = 'partials/forms.html'
@@ -35,6 +36,10 @@ class UserCreate(CreateView):
 
 def home(request):
     return render(request, 'index.html')
+
+def userLogout(request):
+    logout(request)
+    return render(request,'index.html')
 
 class UserProfileUpdate(UpdateView):
     template_name = 'partials/forms.html'
