@@ -17,12 +17,30 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger" style="color: white;">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">
         <img src="{% static  'imgs/logo-retiro.png '   %}" alt="" width="230px" height="60px">
       </a>
 
       <ul class="nav justify-content-end collapse navbar-collapse">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Minhas Inscrições</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
+            id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
+            <img src="{{user.userprofile.foto.url}}" width="40" height="40" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="{% url 'logout'%}">Sair</a>
+          </div>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
         </li>
@@ -35,11 +53,8 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register'%}">Inscrições</a>
         </li>
-        {% if user.is_authenticated %}
-        <p><b> {{ user.username }}</b></p>
-        {% else %}
         <a class="nav-link" href="{% url 'login'%}">
-          <button>Entrar</button>
+          <button class="btn btn-primary">Entrar</button>
         </a>
         {% endif %}
       </ul>

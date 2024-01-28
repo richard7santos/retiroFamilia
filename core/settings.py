@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
-    'payment',
     'user_profile',
     'subscription',
 ]
@@ -129,8 +128,9 @@ STATICFILES_DIRS = ['static']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 
-LOGIN_URL = '/login/'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
