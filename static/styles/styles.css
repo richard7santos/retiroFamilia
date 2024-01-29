@@ -1,27 +1,41 @@
-.nav-link{
+.nav-link {
     color: white !important;
 }
 
-#sobre-retiro{
-    margin:90px;
+#sobre-retiro {
+    margin: 90px;
     width: 70%;
 
 }
 
-#para-casais{
-     display: flex;
-    margin:90px;
-    width: 70%;
-}
-
-#para-Solteiros{
+#para-casais {
     display: flex;
-    margin:90px;
+    margin: 90px;
+    width: 70%;
+}
+
+#para-Solteiros {
+    display: flex;
+    margin: 90px;
     width: 70%;
     gap: 2%;
 }
 
-    .imagens{
-       flex-direction: column;
-       gap: 5%;
-    }
+.imagens {
+    flex-direction: column;
+    gap: 5%;
+}
+
+
+.login-style {
+    background-color: #e7e3e3;
+    margin-left: 30%;
+    margin-top: 10%;
+    border-radius: 20px;
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
