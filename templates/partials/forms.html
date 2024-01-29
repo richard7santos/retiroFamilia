@@ -3,22 +3,31 @@
 {% load crispy_forms_tags %}
 
 {% block main %}
-<h3>{{ title }}</h3>
 
-<p>Preencha todos os campos obrigatórios</p>
-<hr>
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
 
-    {{ form|crispy }}
+<section id="cadastro-style">
 
-    <button type="submit" class="btn btn-light mt-3">
-        {% autoescape off %}
-        {{ icon}}
-        {% endautoescape%}
-        {{ button }}
-    </button>
+    <div>
+        <div style="display: flex; align-items: center; justify-content: center;">
+        <h3>{{ title }}</h3>
+    </div>
+        <div class="formulario-cadastro">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
-</form>
+                {{ form|crispy }}
+
+                <button type="submit" class="btn btn-primary">
+                    {% autoescape off %}
+                    {{ icon}}
+                    {% endautoescape%}
+                    {{ button }}
+                </button>
+            </form>
+        </div>
+    </div>
+
+</section>
+
 
 {% endblock%}
