@@ -22,7 +22,7 @@ class UserCreate(CreateView):
         url = super().form_valid(form)
         self.object.groups.add(group)
         self.object.save()
-        UserProfile.objects.create(usuario=self.object)
+        UserProfile.objects.create(usuario=self.object, foto='media/fotos_usuarios/pngtree-user-vector-avatar-png-image_1541962_gITHaTJ.jpg')
         
         return url
         

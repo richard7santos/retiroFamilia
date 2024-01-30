@@ -2,28 +2,22 @@
     color: white !important;
 }
 
-#sobre-retiro {
-    margin: 90px;
-    width: 70%;
-
-}
-
-#para-casais {
+.sessions {
+    margin-top: 5%;
     display: flex;
-    margin: 90px;
-    width: 70%;
-}
-
-#para-Solteiros {
-    display: flex;
-    margin: 90px;
-    width: 70%;
-    gap: 2%;
-}
-
-.imagens {
     flex-direction: column;
-    gap: 5%;
+    text-align: justify;
+}
+
+.dados-index {
+    display: flex;
+    gap: 10px;
+}
+
+.imagens-index {
+    width: 400px;
+    margin: 10px;
+
 }
 
 .avatar {
