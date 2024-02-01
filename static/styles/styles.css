@@ -25,36 +25,17 @@
     height: 40px;
     border-radius: 50%
 }
-.login-style{
-    margin-left: 30%;
-    margin-top: 10%;
-    background-color: rgb(238, 241, 241);
-    width: 40%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5%;
+
+.forms {
+    background-color: #dcdede;
 }
 
-#cadastro-style{
-    margin-left: 25%;
-    margin-top: 7%;
-    background-color: rgb(238, 241, 241);
-    width: 50%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5%;
+/* messages */
+
+ul.messages {
+    padding: 0;
 }
 
-.formulario-cadastro{
-    width: 90%;
-    height: 90%;
-    background-color: rgb(220, 222, 222);
-    margin-left: 5%;
-    margin-top: 3%;
-    padding: 3%;
-    border-radius: 5%;
+ul.messages li {
+    list-style: none;
 }
