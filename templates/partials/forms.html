@@ -4,30 +4,23 @@
 
 {% block main %}
 
-
-<section id="cadastro-style">
-
-    <div>
-        <div style="display: flex; align-items: center; justify-content: center;">
-        <h3>{{ title }}</h3>
-    </div>
-        <div class="formulario-cadastro">
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                {{ form|crispy }}
-
-                <button type="submit" class="btn btn-primary">
-                    {% autoescape off %}
-                    {{ icon}}
-                    {% endautoescape%}
-                    {{ button }}
-                </button>
-            </form>
+<div class="container w-100 h-100 d-flex flex-column mb-5 mt-5 justify-content-center align-items-center">
+    <div class="forms p-5 rounded-3">
+        <div class="d-flex justify-content-center">
+            <h3>{{ title }}</h3>
         </div>
-    </div>
 
-</section>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary ps-5 pe-5">
+                {{ button }}
+            </button>
+        </form>
+
+    </div>
+</div>
+
 
 
 {% endblock%}

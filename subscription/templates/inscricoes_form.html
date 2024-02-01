@@ -1,0 +1,90 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<div class="container">
+    <div class="forms p-5 rounded-3">
+        <div class="d-flex justify-content-center">
+            <h3>{{ title }}</h3>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-2">
+                <div class="col-md-9">
+                    {{ form.nome_inscrito | as_crispy_field }}
+                </div>
+                <div class="col-md-3">
+                    {{ form.idade | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    {{ form.estado_civil | as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.telefone_1 | as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.telefone_2 | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-5">
+                    {{ form.email | as_crispy_field }}
+                </div>
+                <div class="col-md-5">
+                    {{ form.responsavel | as_crispy_field }}
+                </div>
+                <div class="col-md-2">
+                    {{ form.parentesco_responsável | as_crispy_field }}
+                </div>
+            </div>
+            <hr>
+            <div class="row g-2">
+                <div class="col-md-3">
+                    {{ form.cep | as_crispy_field }}
+                </div>
+                <div class="col-md-7">
+                    {{ form.logradouro | as_crispy_field }}
+                </div>
+                <div class="col-md-2">
+                    {{ form.numero | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    {{ form.complemento | as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.bairro | as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.cidade | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    {{ form.uf | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2">
+                <div class="col-md-4">
+                    {{ form.dt_inscricao | as_crispy_field }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary ps-5 pe-5">
+                {{ button }}
+            </button>
+        </form>
+    </div>
+
+
+
+</div>
+</div>
+
+
+
+{% endblock%}

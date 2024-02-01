@@ -18,7 +18,7 @@ class UserCreate(CreateView):
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
-        group = get_object_or_404(Group, name='inscritos')
+        group = get_object_or_404(Group, name='registrados')
         url = super().form_valid(form)
         self.object.groups.add(group)
         self.object.save()
