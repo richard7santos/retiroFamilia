@@ -2,21 +2,23 @@
 {% load static %}
 
 {% block main %}
-<div class="container h-100 pt-5">
+<div class="container pt-5">
     <h4>Olá {{user.username}}</h4>
     <hr>
     <p style="text-align: justify;">Seja bem vindo a uma área só sua!!</p>
     <p style="text-align: justify;">Nessa pagina você pode gerenciar suas inscrições, registrar pagamentos e ver
-        detalhes</p>
+        detalhes.</p>
     <p>Você pode realizar a sua inscrição e também a inscrição de seus dependentes e convidados, para isso, basta clicar
-        no ícone azul de + logo no canto inferios direito da tela</p>
-    <p>Para registrar um pagamento, siga as instruções abaixo:</p>
+        no ícone <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; color: #2067eb;"></i> logo no canto
+        inferior direito da tela.</p>
+    <p><b>Para registrar um pagamento, siga as instruções abaixo:</b></p>
     <ol>
         <li>Escolha a inscrição para a qual quer registrar o pagamento</li>
-        <li>Click na lupa para exibir os detalhes da isncrição, na página seguinte você pode registrar o pagamento</li>
+        <li>Click na lupa para exibir os detalhes da isncrição, na página seguinte você pode registrar o
+            pagamento</li>
         <hr>
     </ol>
-    <p><b>Estas são as suas inscrições</b></p>
+    <h4 class="mb-5 mt-5">Estas são as suas inscrições</h4>
 
     {% if messages %}
     <ul class="messages">
@@ -59,12 +61,10 @@
             {% endfor %}
         </tbody>
     </table>
-
     <div class="container d-flex flex-row-reverse bd-highlight pt-5 ">
         <a href="{% url 'inscrever'%}"> <i class="bi bi-plus-circle-fill" style="font-size: 4rem; color: #2067eb;"></i>
         </a>
     </div>
-
 </div>
 
 {% endblock %}
