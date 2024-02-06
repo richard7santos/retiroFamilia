@@ -6,7 +6,7 @@
 <div class="container">
     <div class="forms p-5 rounded-3 mb-5 mt-5">
         <div class="d-flex justify-content-center">
-            <h3>{{ title }}</h3>
+            <h3 class="display-4 mb-5">{{ title }}</h3>
         </div>
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -71,7 +71,27 @@
                     {{ form.dt_inscricao | as_crispy_field }}
                 </div>
             </div>
+            <hr>
+            <h3 class="display-6 mb-5 mt-2">{{ subtitle }}</h3>
 
+            {{ form_pagamento.management_form }}
+            {% for ft in form_pagamento %}
+
+            <div class="payment-form">
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        {{ ft.data_pagamento | as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ ft.valor | as_crispy_field }}
+                    </div>
+                    <div class="col-md-4">
+                        {{ ft.comprovante_pagamento | as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
             <button type="submit" class="btn btn-primary ps-5 pe-5">
                 {{ button }}
             </button>

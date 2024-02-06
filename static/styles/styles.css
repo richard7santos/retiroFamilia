@@ -39,3 +39,7 @@ ul.messages {
 ul.messages li {
     list-style: none;
 }
+
+.jumbotron {
+    background-color: #e1e3e4;
+}

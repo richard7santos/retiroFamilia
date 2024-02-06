@@ -1,0 +1,73 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container pt-5 pb-5">
+    <div class="jumbotron p-5">
+        <h1 class="display-4">Detalhes da Inscrição</h1>
+        <p class="lead">Olá {{user.username}}.</p>
+        <p class="lead">Aqui você tem todos os detalhes da inscrição de <b>{{inscricao.nome_inscrito }}</b>.</p>
+        <p class="lead">Agora você pode Editar dados que eventualmente foram preenchidos com erros, pode cancelar
+            inscrição e pode registrar pagamentos.</p>
+        <p class="lead">Importante lembrar que você pode registrar seu pagamento parcelado, contando que até a data do
+            retiro, em 11 de outubro de 2024, o valor total esteja quitado por completo. </p>
+        <hr class="my-4">
+        <p class="lead"><b>Nome do Incrito: </b> {{inscricao.nome_inscrito }} </p>
+        <p class="lead"><b>Idade: </b> {{inscricao.idade }} | <b>Estado civil: </b> {{inscricao.estado_civil }} </p>
+        <p class="lead"><b>Data da Inscrição: </b> {{inscricao.dt_inscricao }} </p>
+        <p class="lead"><b>Telefones: </b> {% if inscricao.telefone_1 %}{{inscricao.telefone_1 }} {% endif %}
+            {% if incricao.telefone_2 %} | {{inscricao.telefone_2 }} {% endif %}</p>
+        <p class="lead"><b>Email: </b> {% if inscricao.email %} {{inscricao.email }} {% endif %} </p>
+
+        <p class="lead"><b>Cep: </b> {{inscricao.cep }} </p>
+        <p class="lead"><b>Endereço: </b> {{inscricao.logradouro }}, nº {{inscricao.numero }}
+            {% if inscricao.complemento %}, {{ inscricao.complemento}}{% endif %}, {{inscricao.bairro }}
+            - {{inscricao.cidade }}/ {{ inscricao.uf}}
+        </p>
+        <hr class="my-4">
+        <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
+        <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
+        <p class="lead"><b>{% if inscricao.parentesco_responsável %}Responsável: </b>
+            {{inscricao.responsavel }}, <b>Parentesco: </b> {{ inscricao.parentesco_responsável}} {% endif %} </p>
+        <hr class="my-4">
+        <h3 class="display-6">Pagamentos realizados</h3>
+
+        <table id="list-insc" class="stripe">
+            <thead>
+                <tr>
+                    <th>Data do pagamento </th>
+                    <th>Valor Pago</th>
+                    <th>Comprovante</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pagamentos %}
+                <tr>
+
+                    <td>{{ p.data_pagamento }}</td>
+                    <td>{{ p.valor }}</td>
+                    <td>{{ p.comprovante_pagamento }}</td>
+                    <td class="d-flex justify-content-around">
+                        <a href="{% url 'atualizar' i.id %}"><i class="bi bi-pencil-fill"
+                                style="font-size: 1.5rem; color: #2067eb;"></i></a>
+
+                        <a href="{% url 'incricoes_delete' i.id %}"><i class="bi bi-trash3-fill"
+                                style="font-size: 1.5rem; color: #f80c0c;"></i></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-5">
+
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}
