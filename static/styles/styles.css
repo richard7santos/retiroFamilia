@@ -20,12 +20,6 @@
 
 }
 
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%
-}
-
 .forms {
     background-color: #dcdede;
 }
@@ -42,4 +36,21 @@ ul.messages li {
 
 .jumbotron {
     background-color: #e1e3e4;
+}
+
+.a_pagar {
+    color: #ff0000;
+}
+
+.pago {
+    color: #0000ff;
+}
+
+.bi-plus-circle-fill {
+    font-size: 4rem;
+    color: #2067eb;
+}
+
+.bi-plus-circle-fill:hover {
+    color: #1f55b9;
 }

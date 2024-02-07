@@ -20,6 +20,7 @@ class Inscricoes(models.Model):
     bairro = models.CharField(max_length=200, null=True, blank=True)
     cidade = models.CharField(max_length=200, null=True, blank=True)
     uf = models.CharField(max_length=100, null=True, blank=True)
+    total_pago = models.DecimalField(max_digits=6, decimal_places=2, blank=True, default=0.0)
     RESPONSAVEL_CHOICES = (
         ("Pai", "Pai"),
         ("Mãe", "Mãe"),
@@ -51,11 +52,11 @@ class Inscricoes(models.Model):
         verbose_name_plural = 'Inscrições'
 
 class Pagamento(models.Model):
-    inscricao = models.ForeignKey(Inscricoes, on_delete = models.CASCADE, related_name='pagamentos', blank=True)
+    inscricao = models.ForeignKey(Inscricoes, on_delete = models.CASCADE, blank=True, null=True)
     data_registro= models.DateTimeField(default=timezone.now, blank=True, null=True)
     data_pagamento = models.CharField(max_length=12)
     valor = models.DecimalField(max_digits=6, decimal_places=2)
-    comprovante_pagamento = models.FileField(upload_to ='uploads/', blank=True, null=True)
+    comprovante_pagamento = models.FileField(upload_to ='uploads/')
 
     def formatted_date(self):
         self.data_registro = self.data_registro - timedelta(hours=3)

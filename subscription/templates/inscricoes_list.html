@@ -10,7 +10,7 @@
         detalhes.</p>
     <p>Você pode realizar a sua inscrição e também a inscrição de seus dependentes e convidados, para isso, basta clicar
         no ícone <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; color: #2067eb;"></i> logo no canto
-        inferior direito da tela.</p>
+        superior direito da tela.</p>
     <p><b>Para registrar um pagamento, siga as instruções abaixo:</b></p>
     <ol>
         <li>Escolha a inscrição para a qual quer registrar o pagamento</li>
@@ -18,7 +18,7 @@
             pagamento</li>
         <hr>
     </ol>
-    <h4 class="mb-5 mt-5">Estas são as suas inscrições</h4>
+
 
     {% if messages %}
     <ul class="messages">
@@ -31,35 +31,36 @@
     </ul>
 
     {% endif %}
-    <div class="row">
+    <div class="row jumbotron p-5">
+        <div class="container d-flex justify-content-between mb-5 ">
+            <h4 class="display-6">Estas são as suas inscrições</h4>
+            <a href="{% url 'inscrever'%}"> <i class="bi bi-plus-circle-fill"></i>
+            </a>
+        </div>
+        <hr>
         {% for i in inscricoes %}
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{i.nome_inscrito }}</h5>
-                    <p class="lead"><b>Idade: </b> {{i.idade }}</p>
-                    <p class="lead"><b>Estado civil: </b> {{i.estado_civil }} </p>
-                    <p class="lead"><b>Valor da inscrição: </b> {{i.valor_inscricao }} </p>
-                    <hr>
-                    <div class="d-flex justify-content-around">
-                        <a href="{% url 'incricoes_detalhe' i.id %}"><i class="bi bi-search"
-                                style="font-size: 1.5rem; color: #2067eb;">Detalhes</i></a>
+        <div class="card mb-5 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{i.nome_inscrito }}</h5>
+                <p class="lead"><b>Idade: </b> {{i.idade }} anos</p>
+                <p class="lead"><b>Estado civil: </b> {{i.estado_civil }} </p>
+                <p class="lead"><b>Valor da inscrição: </b>R$ {{i.valor_inscricao }} </p>
 
-                        <a href="{% url 'incricoes_pagar' i.id %}"><i class="bi bi-coin"
-                                style="font-size: 1.5rem; color: #2067eb;">Registrar pagamento</i></a>
+                <hr>
+                <div class="d-flex justify-content-end gap-3">
+                    <a href="{% url 'incricoes_detalhe' i.id %}" class="btn btn-info"><i class="bi bi-search"
+                            style="color: #fefefe;">Detalhes</i></a>
 
-                        <a href="{% url 'incricoes_delete' i.id %}"><i class="bi bi-trash3-fill"
-                                style="font-size: 1.5rem; color: #f80c0c;">Excluir</i></a>
-                    </div>
+                    <a href="{% url 'atualizar' i.id %}" class="btn btn-secondary"><i class="bi bi-pencil"
+                            style="color: #fefefe;">Editar</i></a>
+
+                    <a href="{% url 'incricoes_delete' i.id %}" class="btn btn-danger"><i class="bi bi-trash3-fill"
+                            style="color: #fefefe;">Excluir</i></a>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
 
-    <div class="container d-flex flex-row-reverse bd-highlight pt-5 ">
-        <a href="{% url 'inscrever'%}"> <i class="bi bi-plus-circle-fill" style="font-size: 4rem; color: #2067eb;"></i>
-        </a>
+        {% endfor %}
     </div>
 </div>
 

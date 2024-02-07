@@ -25,14 +25,12 @@
             {% if inscricao.complemento %}, {{ inscricao.complemento}}{% endif %}, {{inscricao.bairro }}
             - {{inscricao.cidade }}/ {{ inscricao.uf}}
         </p>
-        <hr class="my-4">
-        <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
-        <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
+
         <p class="lead"><b>{% if inscricao.parentesco_responsável %}Responsável: </b>
             {{inscricao.responsavel }}, <b>Parentesco: </b> {{ inscricao.parentesco_responsável}} {% endif %} </p>
         <hr class="my-4">
         <h3 class="display-6">Pagamentos realizados</h3>
-
+        <hr class="my-4">
         <table id="list-insc" class="stripe">
             <thead>
                 <tr>
@@ -47,21 +45,33 @@
                 <tr>
 
                     <td>{{ p.data_pagamento }}</td>
-                    <td>{{ p.valor }}</td>
-                    <td>{{ p.comprovante_pagamento }}</td>
-                    <td class="d-flex justify-content-around">
-                        <a href="{% url 'atualizar' i.id %}"><i class="bi bi-pencil-fill"
-                                style="font-size: 1.5rem; color: #2067eb;"></i></a>
+                    <td>R$ {{ p.valor }}</td>
+                    <td><a href=" {{ p.comprovante_pagamento.url }}" target="_blank">Visualizar comprovante</a> </td>
+                    <td><a href="{% url 'pagamento_edit' p.id %}"><i class="bi bi-pencil m-2"
+                                style="font-size: 1.5rem; color: #3532f0;"></i></a>
 
-                        <a href="{% url 'incricoes_delete' i.id %}"><i class="bi bi-trash3-fill"
-                                style="font-size: 1.5rem; color: #f80c0c;"></i></a>
+                        <a href="{% url 'pagamento_delete' p.id %}"><i class="bi bi-trash3-fill"
+                                style="font-size: 1.5rem; color: #f10808;"></i></a>
                     </td>
-
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <div class="mt-5">
+        <div class="mt-5 d-flex justify-content-between">
+            <div>
+                <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
+                <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
+                {% if total_pago >= inscricao.valor_inscricao %}
+                <h1 class="display-6 pago"> Total pago: {{total_pago }}</h1>
+                {% else %}
+                <h1 class="display-6 a_pagar"> Total pago: {{total_pago }}</h1>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url 'incricoes_pagar' inscricao.id %}" class="btn btn-success"><i class="bi bi-coin"
+                        style="font-size: 1.5rem; color: #f1f2f6;">Registrar novo pagamento</i></a>
+
+            </div>
 
         </div>
 

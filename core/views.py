@@ -1,5 +1,6 @@
 from typing import Any
 from django.db.models.base import Model as Model
+from django.contrib.auth.decorators import login_required
 from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
@@ -22,7 +23,7 @@ class UserCreate(CreateView):
         url = super().form_valid(form)
         self.object.groups.add(group)
         self.object.save()
-        UserProfile.objects.create(usuario=self.object, foto='media/fotos_usuarios/pngtree-user-vector-avatar-png-image_1541962_gITHaTJ.jpg')
+        UserProfile.objects.create(usuario=self.object)
         
         return url
         
@@ -54,8 +55,16 @@ class UserProfileUpdate(UpdateView):
     def get_context_data(self, *args, **kwargs: Any):
         context = super().get_context_data( *args, **kwargs)
 
-        context['title'] = "Meus dados"
+        context['title'] = "Atualizar Perfil"
         context['button'] = "Atualizar"
 
         return context
         
+@login_required()
+def profile_detail(request, id):
+    profile = get_object_or_404(UserProfile, pk=id, user=request.user)
+
+    context = {
+        'profile': profile, 
+    }
+    return render(request, 'inscricoes_details.html', context )
