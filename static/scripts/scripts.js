@@ -61,5 +61,15 @@ $(document).ready( function () {
     $('#id_telefone_1').mask('(00) 00000-0000', {placeholder: "(xx) xxxxx-xxxxx"});
     $('#id_telefone_2').mask('(00) 00000-0000', {placeholder: "(xx) xxxxx-xxxxx"});
     $('#id_cep').mask('00000-000', {placeholder: "xxxxx-xxx"});
-    $('#id_dt_inscricao').mask('00/00/0000');
+    $('#id_dt_inscricao').mask('00/00/0000 00:00:00');
+    $('#id_data_pagamento').mask('00/00/0000');
+    
 } );
+
+$(function(){
+    $('.payment-form').formset({
+
+        addText: 'Registrar novo pagamento',
+        deleteText: 'Remover este Pagamento',
+    });
+})

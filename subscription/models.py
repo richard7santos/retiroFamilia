@@ -20,6 +20,7 @@ class Inscricoes(models.Model):
     bairro = models.CharField(max_length=200, null=True, blank=True)
     cidade = models.CharField(max_length=200, null=True, blank=True)
     uf = models.CharField(max_length=100, null=True, blank=True)
+    total_pago = models.DecimalField(max_digits=6, decimal_places=2, blank=True, default=0.0)
     RESPONSAVEL_CHOICES = (
         ("Pai", "Pai"),
         ("Mãe", "Mãe"),
@@ -32,8 +33,8 @@ class Inscricoes(models.Model):
         ("Solteiro", "Solteiro"),
         ("Namorando", "Namorando")
     )
-    estado_civil = models.CharField(max_length=20, choices = ESTADO_CIVIL_CHOICES, blank=True )
-    valor_inscricao = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    estado_civil = models.CharField(max_length=20, choices = ESTADO_CIVIL_CHOICES )
+    valor_inscricao = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     STATUS_CHOICES = (
         ("Pago", "Pago"),
         ("Pagamento parcelado", "Pagamento parcelado"),
@@ -42,7 +43,7 @@ class Inscricoes(models.Model):
 
     def formatted_date(self):
         self.dt_inscricao = self.dt_inscricao - timedelta(hours=3)
-        return self.dt_inscricao.strftime("%d/%m/%y %Hh%M")
+        return self.dt_inscricao.strftime("%d/%m/%y")
 
     def __str__(self):
         return self.nome_inscrito
@@ -51,14 +52,15 @@ class Inscricoes(models.Model):
         verbose_name_plural = 'Inscrições'
 
 class Pagamento(models.Model):
-    Inscrito = models.ForeignKey(Inscricoes, on_delete = models.CASCADE, related_name='pagamentos')
-    data_pagamento= models.DateField()
+    inscricao = models.ForeignKey(Inscricoes, on_delete = models.CASCADE, blank=True, null=True)
+    data_registro= models.DateTimeField(default=timezone.now, blank=True, null=True)
+    data_pagamento = models.CharField(max_length=12)
     valor = models.DecimalField(max_digits=6, decimal_places=2)
     comprovante_pagamento = models.FileField(upload_to ='uploads/')
 
     def formatted_date(self):
-        self.data_pagamento = self.data_pagamento - timedelta(hours=3)
-        return self.data_pagamento.strftime("%d/%m/%y %Hh%M")
+        self.data_registro = self.data_registro - timedelta(hours=3)
+        return self.data_registro.strftime("%d/%m/%y %Hh%M")
 
     def __str__(self):
         return str(self.data_pagamento)

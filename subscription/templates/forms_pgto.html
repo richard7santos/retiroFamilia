@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+<div class="container w-100 h-100 d-flex flex-column mb-5 mt-5 justify-content-center align-items-center">
+    <div class="forms p-5 rounded-3">
+        <div class="d-flex justify-content-center">
+            <h3 class="display-5 mb-2">{{ title }}</h3>
+        </div>
+        <hr>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form.data_pagamento|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.valor|as_crispy_field }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.comprovante_pagamento|as_crispy_field }}
+                </div>
+            </div>
+            <hr>
+            <div class="container d-flex justify-content-end gap-4">
+                <button type="submit" class="btn btn-primary ps-5 pe-5">
+                    {{ button }}
+                </button>
+                <a href="{% url 'incricoes_list'%}" class="btn btn-secondary ps-5 pe-5">
+                    {{ button2 }}
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock%}
