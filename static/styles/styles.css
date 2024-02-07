@@ -1,5 +1,22 @@
+:root {
+    --global-primary-color: #E2F1E6;
+    --title-color-primary: #00ADEF;
+    --title-color-secondary: #F5811E;
+}
+
+.navbar {
+    background-color: var(--global-primary-color);
+}
+
 .nav-link {
-    color: white !important;
+    color: var(--title-color-secondary) !important;
+    font-weight: bolder;
+}
+
+.nav-link:hover {
+    color: var(--global-primary-color) !important;
+    background-color: var(--title-color-secondary);
+    font-weight: bold;
 }
 
 .sessions {
