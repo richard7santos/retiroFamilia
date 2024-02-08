@@ -1,2 +1,6 @@
 venv/
 core/__pycache__
+.pyc
+*.idea
+*.sqlite3
+media

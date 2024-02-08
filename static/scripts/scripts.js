@@ -66,10 +66,3 @@ $(document).ready( function () {
     
 } );
 
-$(function(){
-    $('.payment-form').formset({
-
-        addText: 'Registrar novo pagamento',
-        deleteText: 'Remover este Pagamento',
-    });
-})

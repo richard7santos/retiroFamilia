@@ -2,149 +2,72 @@
 {% load static %}
 {% block main %}
 {% include 'partials/slider.html' %}
-<div class="container">
-    <section id="sobre-retiro" class="sessions">
+<div class="container d-flex flex-column justify-content-center align-items-center pt-5">
+    <h1 class="display-4 mb-5" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="800"
+        data-aos-duration="500">O melhor retiro de todos os tempos!</h1>
+    <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
+        <img src="{% static 'imgs/img1.png'%}" data-aos="fade-up-right" alt="" width="30%">
+        <img src="{% static 'imgs/img2.png'%}" data-aos="flip-left" width="30%">
+        <img src="{% static 'imgs/img3.png'%}" data-aos="fade-left" alt="" width="30%">
+    </div>
+    <div class="display-6 pt-4" data-aos="fade-up" data-aos-anchor-placement="top-bottom">LAZER - DESCANSO - RENOVO
+        ESPIRITUAL</div>
+</div>
+<section id="casais" class="mt-5 p-5">
+    <div class="container">
+        <h1 class="display-4 casais-text"> Para casais</h1>
+        <div class="d-flex justify-content-center align-items-center">
+            <p class="fs-3 casais-text">Prepare-se para viver dias incríveis de diversão, renovo espiritual e intimidade
+                com seu
+                cônjuge. <br>
+                O local conta com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado.
+                <br>
+                Haverá uma programação toda especial para o casal desfrutar de um ambiente romântico, ministrações e
+                dinâmicas.
 
-        <h1>Sobre o Retiro</h1>
-        <div>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-                Latin
-                literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-                Hampden-Sydney
-                College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-                passage,
-                and
-                going through the cites of the word in classical literature, discovered the undoubtable source. Lorem
-                Ipsum
-                comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                Evil)
-                by
-                Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-                Renaissance.
-                The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-            <p>
+            </p>
+            <img src="{% static 'imgs/casal.png'%}" class="floater" alt="" width="30%">
+        </div>
+        <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
+    </div>
 
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                Sections
-                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
-                original
-                form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+</section>
+<section id="solteiros" class="p-5">
+    <div class="container">
+        <h1 class="display-4 casais-text"> Para os Jovens Solteiros</h1>
+        <div class="d-flex justify-content-center align-items-center">
+            <p class="fs-3 casais-text">Prepare-se para viver dias incríveis de diversão, renovo espiritual e
+                intimidade
+                com seu
+                cônjuge. <br>
+                O local conta com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado.
+                <br>
+                Haverá uma programação toda especial para o casal desfrutar de um ambiente romântico, ministrações e
+                dinâmicas.
             </p>
         </div>
+        <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
+    </div>
 
-    </section>
+</section>
+<section id="info" class="p-5 mt-5 d-flex flex-column justify-content-center align-items-center">
+    <p class="display-6 pulse"> Dias 11, 12 e 13 de Outubro de 2024</p>
+    <p class="fs-5">Prepare-se para viver dias incríveis de diversão, renovo espiritual com toda a sua família. <br>
+        Haverá eventos para casais, para solteiros, para crianças e adolescentes. <br>
+        Local amplo, com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado, quadras
+        de esportes,
+        fazendinha, além de uma vista incrível.
+    </p>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <img src="{% static 'imgs/logo-aguas.png'%}" alt="" width="50%">
+        <p class="fs-5">Av. Pau Furado - Zona Rural, Uberlândia - MG, 38400-000</p>
+    </div>
 
+</section>
 
-    <section id="para-casais" class="sessions">
-        <h1>Para Casais</h1>
-        <div class="dados-index">
-            <div>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                    classical
-                    Latin
-                    literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-                    Hampden-Sydney
-                    College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-                    passage,
-                    and
-                    going through the cites of the word in classical literature, discovered the undoubtable source.
-                    Lorem
-                    Ipsum
-                    comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                    Evil)
-                    by
-                    Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-                    Renaissance.
-                    The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                <p>
-
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                    Sections
-                    1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-                    exact
-                    original
-                    form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                </p>
-            </div>
-            <div>
-                <img class="imagens-index" src="{% static 'imgs/parque.png' %}" alt="...">
-                <img class="imagens-index" src="{% static 'imgs/parque2.png' %}" alt="...">
-            </div>
-        </div>
-    </section>
-
-    <section id="para-Solteiros" class="sessions">
-        <h1>Para Solteiros</h1>
-        <div class="dados-index">
-            <div>
-                <img class="imagens-index" src="{% static 'imgs/parque.png' %}" alt="...">
-                <img class="imagens-index" src="{% static 'imgs/parque2.png' %}" alt="...">
-            </div>
-            <div>
-
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                    classical
-                    Latin
-                    literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-                    Hampden-Sydney
-                    College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-                    passage,
-                    and
-                    going through the cites of the word in classical literature, discovered the undoubtable source.
-                    Lorem
-                    Ipsum
-                    comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                    Evil)
-                    by
-                    Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-                    Renaissance.
-                    The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                <p>
-
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                    Sections
-                    1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-                    exact
-                    original
-                    form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                </p>
-
-                <div>
-
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical
-                        Latin
-                        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-                        Hampden-Sydney
-                        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
-                        Ipsum
-                        passage,
-                        and
-                        going through the cites of the word in classical literature, discovered the undoubtable source.
-                        Lorem
-                        Ipsum
-                        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good
-                        and
-                        Evil)
-                        by
-                        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during
-                        the
-                        Renaissance.
-                        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
-                        1.10.32.
-                    <p>
-
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                        Sections
-                        1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-                        exact
-                        original
-                        form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                    </p>
-                </div>
-            </div>
-    </section>
-
-</div>
-
+<script src=" https://unpkg.com/aos@next/dist/aos.js">
+</script>
+<script>
+    AOS.init();
+</script>
 {% endblock%}
