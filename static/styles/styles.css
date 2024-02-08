@@ -2,7 +2,7 @@
     --global-primary-color: #E2F1E6;
     --title-color-primary: #00ADEF;
     --title-color-secondary: #F5811E;
-    --bg-form: #dcdede;
+    --bg-form: #e2e8e8;
 }
 
 .navbar {
@@ -74,5 +74,5 @@ ul.messages li {
 }
 
 .forms {
-    background-color: var();
+    background-color: var(--bg-form);
 }
