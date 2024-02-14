@@ -39,9 +39,9 @@
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"
             id="navbarDropdownMenuLink" role="button" aria-haspopup="true" aria-expanded="false">
             {% if user.userprofile.foto %}
-            <img src="{{user.userprofile.foto.url}}" width="40" height="40" class="rounded-circle">
+            <img src="{{ user.userprofile.foto.url }}" width="40" height="40" class="rounded-circle">
             {% else %}
-            <img src="{% static  'default-user-image.jpg' %}" width="40" height="40" class="rounded-circle">
+            <img src="{% static  'imgs/default-user-image.jpg' %}" width="40" height="40" class="rounded-circle">
             {% endif %}
 
           </a>
