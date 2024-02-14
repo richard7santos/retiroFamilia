@@ -97,8 +97,13 @@ def delete_incricao(request, id):
 def detalhe_incricao(request, id):
     inscricao = get_object_or_404(Inscricoes, pk=id, user=request.user)   
     pagamentos = Pagamento.objects.filter(inscricao=inscricao)
-    total_pago = Pagamento.objects.filter(inscricao=inscricao).aggregate(total=Sum('valor'))
-    total_pago = float(total_pago['total'])
+    qtd_pgtos = len(pagamentos)
+
+    if (qtd_pgtos != 0):
+        total_pago = Pagamento.objects.filter(inscricao=inscricao).aggregate(total=Sum('valor'))
+        total_pago = float(total_pago['total'])
+    else:
+        total_pago = 0.0
 
     context = {
         'inscricao': inscricao,
