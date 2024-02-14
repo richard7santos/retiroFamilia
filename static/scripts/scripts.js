@@ -51,8 +51,8 @@ $(document).ready( function () {
         }
     });
 
-    $("#id_nome_inscrito").attr("placeholder", "Informe seu nome completo");
     $("#id_email").attr("placeholder", "email@email.com");
+    $("#id_conjuge").attr("placeholder", "Informe o nome do seu cônjuge");
     $("#id_complemento").attr("placeholder", "Ex. Apt X, bloco Y...");
     $("#id_username").attr("placeholder", "Informe seu usuário");
     $("#id_password").attr("placeholder", "Informe sua senha");
@@ -63,6 +63,32 @@ $(document).ready( function () {
     $('#id_cep').mask('00000-000', {placeholder: "xxxxx-xxx"});
     $('#id_dt_inscricao').mask('00/00/0000 00:00:00');
     $('#id_data_pagamento').mask('00/00/0000');
-    
+
+
+    $('#id_idade').blur( function(){
+        var idade = ($(this).val())
+        if(idade < 18 ){
+           $('#menor-idade').removeClass('d-none');
+        }else{
+            $('#menor-idade').addClass('d-none');
+        }
+    });
+
+    $('#id_dt_inscricao').attr('disabled', true)
+
+    $('#id_estado_civil').change( function(){
+        var estado_civil = ($(this).val())
+        if(estado_civil === 'Casado'){
+           $('#conjuge').removeClass('d-none');
+        }else{
+            $('#conjuge').addClass('d-none');
+        }
+    });
+    $('#inscricoes').ready( function(){
+        var estado_civil = ($('#id_estado_civil').val())
+        if(estado_civil === 'Casado'){
+           $('#conjuge').removeClass('d-none');
+        }
+    });   
 } );
 

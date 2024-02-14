@@ -8,8 +8,22 @@
         <div class="d-flex justify-content-center">
             <h3 class="display-4 mb-5">{{ title }}</h3>
         </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <div>
+            <p class="lead"> Para garantir sua presença no Retiro da Família, preencha os campos abaixo.</p>
+            <p class="lead"> <b>Os valores para inscrições são:</b> </p>
+            <p class="lead"> <b>Solteiros:</b> R$500,00 </p>
+            <p class="lead"> <b>Casais:</b> R$ 1.300,00 </p>
+            <p class="lead"> Os campos marcados com * são de preencimento obrigatório</p>
+        </div>
+        <hr>
+        <form action="" method="POST" enctype="multipart/form-data" id="inscricoes">
             {% csrf_token %}
+            <div class="row g-2">
+                <div class="col-md-4">
+                    {{ form.estado_civil | as_crispy_field }}
+                </div>
+            </div>
+
             <div class="row g-2">
                 <div class="col-md-9">
                     {{ form.nome_inscrito | as_crispy_field }}
@@ -18,9 +32,25 @@
                     {{ form.idade | as_crispy_field }}
                 </div>
             </div>
+            <div class="row g-2 d-none" id="conjuge">
+                <div class="col-md-9">
+                    {{ form.conjuge | as_crispy_field }}
+                </div>
+                <div class="col-md-3">
+                    {{ form.idade_conjuge | as_crispy_field }}
+                </div>
+            </div>
+            <div class="row g-2 d-none" id="menor-idade">
+                <div class="col-md-5">
+                    {{ form.responsavel | as_crispy_field }}
+                </div>
+                <div class="col-md-2">
+                    {{ form.parentesco_responsável | as_crispy_field }}
+                </div>
+            </div>
             <div class="row g-2">
                 <div class="col-md-4">
-                    {{ form.estado_civil | as_crispy_field }}
+                    {{ form.email | as_crispy_field }}
                 </div>
                 <div class="col-md-4">
                     {{ form.telefone_1 | as_crispy_field }}
@@ -29,17 +59,7 @@
                     {{ form.telefone_2 | as_crispy_field }}
                 </div>
             </div>
-            <div class="row g-2">
-                <div class="col-md-5">
-                    {{ form.email | as_crispy_field }}
-                </div>
-                <div class="col-md-5">
-                    {{ form.responsavel | as_crispy_field }}
-                </div>
-                <div class="col-md-2">
-                    {{ form.parentesco_responsável | as_crispy_field }}
-                </div>
-            </div>
+
             <hr>
             <div class="row g-2">
                 <div class="col-md-3">
@@ -71,7 +91,7 @@
                     {{ form.dt_inscricao | as_crispy_field }}
                 </div>
             </div>
-         
+
             <button type="submit" class="btn btn-primary ps-5 pe-5">
                 {{ button }}
             </button>

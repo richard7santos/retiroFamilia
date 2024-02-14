@@ -7,12 +7,42 @@
     <div class="jumbotron p-5">
         <h1 class="display-4">Detalhes da Inscrição</h1>
         <p class="lead">Olá {{user.username}}.</p>
-        <p class="lead">Aqui você tem todos os detalhes da inscrição de <b>{{inscricao.nome_inscrito }}</b>.</p>
+        <p class="lead">Aqui você tem todos os detalhes da inscrição de <b class="pago">{{inscricao.nome_inscrito }}
+                {% if inscricao.conjuge %} e {{inscricao.conjuge }} {% endif %}</b>.</p>
         <p class="lead">Agora você pode Editar dados que eventualmente foram preenchidos com erros, pode cancelar
             inscrição e pode registrar pagamentos.</p>
         <p class="lead">Importante lembrar que você pode registrar seu pagamento parcelado, contando que até a data do
             retiro, em 11 de outubro de 2024, o valor total esteja quitado por completo. </p>
         <hr class="my-4">
+
+        {% if inscricao.estado_civil == 'Casado' %}
+        <p class="lead"><b>Nome do Sacerdote: </b> {{inscricao.nome_inscrito }} |
+            <b>Idade: </b> {{inscricao.idade }} anos
+        </p>
+
+        {% if inscricao.conjuge %}
+        <p class="lead"><b>Nome da Esposa virtuosa: </b> {{inscricao.conjuge }} |
+            <b>Idade: </b> {{inscricao.idade_conjuge }} anos
+        </p>
+        {% else %}
+        <h5 class="card-title a_pagar">Hei varão, você esqueceu de informar os dados de sua esposa!!
+        </h5>
+        <a href="{% url 'atualizar' inscricao.id %}">
+            <h5 class="card-title pago">Click aqui e atualize sua inscrição!</h5>
+        </a>
+        <hr>
+        {% endif %}
+        <p class="lead"><b>Data da Inscrição: </b> {{inscricao.dt_inscricao }} </p>
+        <p class="lead"><b>Telefones: </b> {% if inscricao.telefone_1 %}{{inscricao.telefone_1 }} {% endif %}
+            {% if incricao.telefone_2 %} | {{inscricao.telefone_2 }} {% endif %}</p>
+
+        <p class="lead"><b>Cep: </b> {{inscricao.cep }} </p>
+        <p class="lead"><b>Endereço: </b> {{inscricao.logradouro }}, nº {{inscricao.numero }}
+            {% if inscricao.complemento %}, {{ inscricao.complemento}}{% endif %}, {{inscricao.bairro }}
+            - {{inscricao.cidade }}/ {{ inscricao.uf}}
+        </p>
+
+        {% else %}
         <p class="lead"><b>Nome do Incrito: </b> {{inscricao.nome_inscrito }} </p>
         <p class="lead"><b>Idade: </b> {{inscricao.idade }} | <b>Estado civil: </b> {{inscricao.estado_civil }} </p>
         <p class="lead"><b>Data da Inscrição: </b> {{inscricao.dt_inscricao }} </p>
@@ -28,6 +58,8 @@
 
         <p class="lead"><b>{% if inscricao.parentesco_responsável %}Responsável: </b>
             {{inscricao.responsavel }}, <b>Parentesco: </b> {{ inscricao.parentesco_responsável}} {% endif %} </p>
+
+        {% endif %}
         <hr class="my-4">
         <h3 class="display-6">Pagamentos realizados</h3>
         <hr class="my-4">
