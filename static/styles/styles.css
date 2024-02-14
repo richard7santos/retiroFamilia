@@ -3,10 +3,15 @@
     --title-color-primary: #00ADEF;
     --title-color-secondary: #F5811E;
     --bg-form: #e2e8e8;
+    --bg-foter: rgb(41, 37, 37);
 }
 
 .navbar {
     background-color: var(--global-primary-color);
+}
+
+.footer {
+    background-color: var(--bg-foter);
 }
 
 .nav-link {
@@ -30,9 +35,23 @@
     background-repeat: no-repeat,
 }
 
-.casais-text {
+.home-title {
     color: #e1e3e4;
-    text-shadow: #000000;
+    text-shadow: 0.2em 0.2em 0.3em black;
+    font-size: clamp(1em, 1em + 1vw, 1.5em);
+}
+
+.home-text {
+    color: black;
+    font-size: clamp(1em, 1em + 1vw, 1.5em);
+    text-align: justify;
+}
+
+.bg-text {
+    background-image: url("/static/imgs/bg-text.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 #solteiros {
@@ -75,4 +94,8 @@ ul.messages li {
 
 .forms {
     background-color: var(--bg-form);
+}
+
+.hidden {
+    display: none;
 }
