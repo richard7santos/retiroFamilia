@@ -41,10 +41,45 @@
         {% for i in inscricoes %}
         <div class="card mb-5 shadow-sm">
             <div class="card-body">
-                <h5 class="card-title">{{i.nome_inscrito }}</h5>
-                <p class="lead"><b>Idade: </b> {{i.idade }} anos</p>
-                <p class="lead"><b>Estado civil: </b> {{i.estado_civil }} </p>
-                <p class="lead"><b>Valor da inscrição: </b>R$ {{i.valor_inscricao }} </p>
+
+                {% if i.estado_civil == 'Casado' %}
+                <div class="row">
+                    <div class="d-flex justify-content-center mb-5 gap-3">
+                        <p class="display-6 ">Inscrição Casal</p>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Sacerdote: {{i.nome_inscrito }}</h5>
+                        <p class="lead"><b>Idade: </b> {{i.idade }} anos</p>
+                    </div>
+                    {% if i.conjuge %}
+                    <div class="col-md-6">
+                        <h5 class="card-title">Esposa virtuosa: {{i.conjuge }}</h5>
+                        <p class="lead"><b>Idade: </b> {{i.idade_conjuge }} anos</p>
+                    </div>
+                    {% else %}
+                    <div class="col-md-6">
+                        <h5 class="card-title a_pagar">Hei varão, você esqueceu de informar os dados de sua esposa!!
+                        </h5>
+                        <a href="{% url 'atualizar' i.id %}">
+                            <h5 class="card-title pago">Click aqui e atualize sua inscrição!</h5>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <p class="lead"><b>Valor da Inscrição: R$ </b> {{i.valor_inscricao }}</p>
+                </div>
+                {% else %}
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Nome: {{i.nome_inscrito }}</h5>
+                        <p class="lead"><b>Idade: </b> {{i.idade }} anos</p>
+                        <p class="lead"><b>Valor da Inscrição: R$ </b> {{i.valor_inscricao }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+
 
                 <hr>
                 <div class="d-flex justify-content-end gap-3">

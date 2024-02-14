@@ -15,54 +15,91 @@
 </div>
 <section id="casais" class="mt-5 p-5">
     <div class="container">
-        <h1 class="display-4 casais-text"> Para casais</h1>
-        <div class="d-flex justify-content-center align-items-center">
-            <p class="fs-3 casais-text">Prepare-se para viver dias incríveis de diversão, renovo espiritual e intimidade
-                com seu
-                cônjuge. <br>
-                O local conta com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado.
-                <br>
-                Haverá uma programação toda especial para o casal desfrutar de um ambiente romântico, ministrações e
-                dinâmicas.
-
-            </p>
-            <img src="{% static 'imgs/casal.png'%}" class="floater" alt="" width="30%">
+        <div class="row align-items-center">
+            <h1 class="display-4 home-title">Para casais</h1>
+            <div class="col-12 col-sm-6 bg-text p-5">
+                <p class="home-text fs-3"> <i> ... Assim, eles já não são dois, mas sim uma só carne. </i></p>
+                <p class="home-text">Prepare-se para viver dias incríveis de diversão, renovo espiritual e
+                    intimidade
+                    com seu
+                    cônjuge. <br>
+                    O local conta com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com
+                    ar-condicionado.
+                    <br>
+                    Haverá uma programação toda especial para o casal desfrutar de um ambiente romântico, ministrações e
+                    dinâmicas.
+                </p>
+            </div>
+            <div class="col-6 col-sm-6">
+                <img src="{% static 'imgs/casal.png'%}" class="floater" alt="" width="80%">
+            </div>
+            <div class="col-6 col-sm-6">
+                <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
+            </div>
         </div>
-        <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
     </div>
-
 </section>
 <section id="solteiros" class="p-5">
     <div class="container">
-        <h1 class="display-4 casais-text"> Para os Jovens Solteiros</h1>
-        <div class="d-flex justify-content-center align-items-center">
-            <p class="fs-3 casais-text">Prepare-se para viver dias incríveis de diversão, renovo espiritual e
-                intimidade
-                com seu
-                cônjuge. <br>
-                O local conta com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado.
-                <br>
-                Haverá uma programação toda especial para o casal desfrutar de um ambiente romântico, ministrações e
-                dinâmicas.
-            </p>
+        <div class="row align-items-center">
+            <h1 class="display-4 home-title">Para os Jovens Solteiros</h1>
+            <div class="col-12 col-sm-6 bg-text p-5">
+                <p class="home-text fs-3"> <i>Jovens, eu escrevi a vocês, porque são fortes...</i></p>
+                <p class="home-text"> Prepare-se para uma experiência sobrenatural com Deus. <br>
+                    Diversão, descanso, meditação na Palavra, muiiita música!! <br>
+                    O local conta com 4 piscinas, sendo 2 aquecidas, quadras de poliesportivas de salão e societ, salão
+                    de festas (E VAI ROALR MUITA FESTA). <br>
+                    Você não vai querer perder não é? então corre e se inscreve!
+                </p>
+            </div>
+            <div class="col-6 col-sm-6">
+                <img src="{% static 'imgs/img-jovens.png'%}" class="floater" alt="" width="80%">
+            </div>
+            <div class="col-6 col-sm-6">
+                <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
+            </div>
         </div>
-        <a href="{% url 'inscrever'%}" class="btn btn-primary heartbeat"> Inscreva-se</a>
     </div>
-
 </section>
-<section id="info" class="p-5 mt-5 d-flex flex-column justify-content-center align-items-center">
-    <p class="display-6 pulse"> Dias 11, 12 e 13 de Outubro de 2024</p>
-    <p class="fs-5">Prepare-se para viver dias incríveis de diversão, renovo espiritual com toda a sua família. <br>
-        Haverá eventos para casais, para solteiros, para crianças e adolescentes. <br>
-        Local amplo, com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado, quadras
-        de esportes,
-        fazendinha, além de uma vista incrível.
-    </p>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <img src="{% static 'imgs/logo-aguas.png'%}" alt="" width="50%">
-        <p class="fs-5">Av. Pau Furado - Zona Rural, Uberlândia - MG, 38400-000</p>
-    </div>
 
+<section id="info">
+    <div class="container p-5 d-flex flex-column justify-content-center align-items-center">
+        <p class="display-6 pulse"> Dias 11, 12 e 13 de Outubro de 2024</p>
+        <p class="home-text">Você está convidado a viver dias incríveis de diversão, renovo espiritual com toda a sua
+            família.
+            <br>
+            Haverão eventos para casais, para solteiros, para crianças e adolescentes. <br>
+            Local amplo, com 4 piscinas, sendo 2 aquecidas, suites individuais para os casais com ar-condicionado,
+            quadras
+            de esportes, fazendinha, além de uma vista incrível.
+        </p>
+        <p class="home-text">As isncrições podem ser feitas aqui mesmo no site, entrando em contato com seu lider de
+            célula, ou ainda
+            entrando em contato pelo whatsapp.</p>
+        <p class="home-text fs-3 pago">O investimento da inscrição é R$ 500,00 individual (para solteiros) e R$ 1300,00
+            para casal.
+        </p>
+        <p class="home-text"> Você pode efetuar o pagamento parcelado em até a quantidade de meses que faltam para a
+            realização deste evento, então, quanto antes você se inscrever, em mais vezes você poderá parcelar!</p>
+        <div class="row w-100">
+            <div class="col-6">
+                <p class="lead"><b>Local: </b> Retiro Águas Vivas</p>
+                <p class="lead"><b>Endereço: </b> Av. Pau Furado - Zona Rural, Uberlândia - MG, 38400-000</p>
+            </div>
+            <div class="col-6">
+                <a href="https://api.whatsapp.com/send?phone=5534992239516" target="blank"
+                    class="btn btn-success p-3 m-3">Mais
+                    informações <i class="bi bi-whatsapp" style="font-size:x-large; margin-left: 5px;"></i></a>
+
+            </div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+            <p class="home-text">Realização:</p>
+            <img src="{% static 'imgs/logo-igreja.png'%}" alt="" width="40%" class="mb-5">
+            <p class="home-text">Av. Afrânio Rodrigues da Cunha, 47 - Tabajaras - Uberlândia/MG</p>
+        </div>
+    </div>
 </section>
 
 <script src=" https://unpkg.com/aos@next/dist/aos.js">
