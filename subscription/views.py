@@ -62,9 +62,9 @@ def edit_incricao(request, id):
             insc.user = request.user
             estadocivil = insc.estado_civil
             if estadocivil == 'Casado':
-                insc.valor_inscricao = 1300.00
+                insc.valor_inscricao = 1380.00
             else:
-                insc.valor_inscricao = 500.00
+                insc.valor_inscricao = 550.00
 
             insc.save()
             messages.success(request, "SUCESSO: Inscrição Atualizada com sucesso.")

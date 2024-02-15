@@ -52,6 +52,7 @@ $(document).ready( function () {
     });
 
     $("#id_email").attr("placeholder", "email@email.com");
+    $("#id_nome_inscrito").attr("placeholder", "Informe o nome completo");
     $("#id_conjuge").attr("placeholder", "Informe o nome do seu cônjuge");
     $("#id_complemento").attr("placeholder", "Ex. Apt X, bloco Y...");
     $("#id_username").attr("placeholder", "Informe seu usuário");
