@@ -57,10 +57,11 @@
         </p>
 
         <p class="lead"><b>{% if inscricao.parentesco_responsável %}Responsável: </b>
-            {{inscricao.responsavel }}, <b>Parentesco: </b> {{ inscricao.parentesco_responsável}} {% endif %} </p>
+            {{inscricao.responsavel }} | <b>Parentesco: </b> {{ inscricao.parentesco_responsável}} {% endif %} </p>
 
         {% endif %}
         <hr class="my-4">
+        {% if pagamentos %}
         <h3 class="display-6">Pagamentos realizados</h3>
         <hr class="my-4">
         <table id="list-insc" class="stripe">
@@ -102,14 +103,32 @@
             <div>
                 <a href="{% url 'incricoes_pagar' inscricao.id %}" class="btn btn-success"><i class="bi bi-coin"
                         style="font-size: 1.5rem; color: #f1f2f6;">Registrar novo pagamento</i></a>
-
             </div>
 
         </div>
+        {% else %}
+        <h3 class="display-6 a_pagar">Nenhum pagamento registrado</h3>
+        <hr class="my-4">
 
+        <div class="mt-5 d-flex justify-content-between">
+            <div>
+                <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
+                <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
+                {% if total_pago > 0 %}
+                {% if total_pago >= inscricao.valor_inscricao %}
+                <h1 class="display-6 pago"> Total pago: {{total_pago }}</h1>
+                {% else %}
+                <h1 class="display-6 a_pagar"> Total pago: {{total_pago }}</h1>
+                {% endif %}
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url 'incricoes_pagar' inscricao.id %}" class="btn btn-success"><i class="bi bi-coin"
+                        style="font-size: 1.5rem; color: #f1f2f6;">Registrar primeiro pagamento</i></a>
+            </div>
 
+        </div>
+        {% endif %}
     </div>
 </div>
-
-
 {% endblock %}
