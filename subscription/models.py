@@ -23,7 +23,7 @@ class Inscricoes(models.Model):
     bairro = models.CharField(max_length=200, null=True, blank=True)
     cidade = models.CharField(max_length=200, null=True, blank=True)
     uf = models.CharField(max_length=100, null=True, blank=True)
-    total_pago = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    total_pago = models.DecimalField(max_digits=6, decimal_places=2, blank=True, default=0.0 )
     RESPONSAVEL_CHOICES = (
         ("Pai", "Pai"),
         ("Mãe", "Mãe"),
