@@ -32,11 +32,20 @@
 
     {% endif %}
     <div class="row jumbotron p-5">
+        {% if inscricoes %}
         <div class="container d-flex justify-content-between mb-5 ">
             <h4 class="display-6">Estas são as suas inscrições</h4>
             <a href="{% url 'inscrever'%}"> <i class="bi bi-plus-circle-fill"></i>
             </a>
         </div>
+        {% else %}
+        <div class="container d-flex flex-column align-items-center mb-5 ">
+            <h4 class="display-6">Você ainda não realizou nenhuma inscrição</h4>
+            <a href="{% url 'inscrever'%}">
+                <h4 class="display-6">Faça sua Inscrição clicando aqui</h4>
+            </a>
+        </div>
+        {% endif %}
         <hr>
         {% for i in inscricoes %}
         <div class="card mb-5 shadow-sm">
@@ -78,9 +87,6 @@
                     </div>
                 </div>
                 {% endif %}
-
-
-
                 <hr>
                 <div class="d-flex justify-content-end gap-3">
                     <a href="{% url 'incricoes_detalhe' i.id %}" class="btn btn-info"><i class="bi bi-search"
