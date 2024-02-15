@@ -5,7 +5,7 @@ from subscription.models import Inscricoes, Pagamento
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models.aggregates import Avg, Sum, Count
+from django.db.models.aggregates import  Sum
 
 
 @login_required()
@@ -15,7 +15,6 @@ def list_incricao(request):
 
 @login_required()
 def add_incricao(request):
-     
     form = InscricoesForm()
     context = {
             'title': "Formulário de Inscrição",
@@ -25,22 +24,16 @@ def add_incricao(request):
     }
         
     if request.method == "POST":
-
         form = InscricoesForm(data=request.POST)
 
         if form.is_valid():
-
             insc = form.save(commit=False)
             insc.user = request.user
             estadocivil = insc.estado_civil
-            responsavel = insc.responsavel
             if estadocivil == 'Casado':
-                insc.valor_inscricao = 1300.00
+                insc.valor_inscricao = 1380.00
             else:
-                insc.valor_inscricao = 500.00
-
-            if(responsavel == "-"):
-               insc.responsavel = insc.nome_inscrito
+                insc.valor_inscricao = 550.00
 
             insc.save()
             messages.success(request, "SUCESSO: Inscrição realizada com sucesso.")
@@ -83,9 +76,7 @@ def edit_incricao(request, id):
 
 @login_required()
 def delete_incricao(request, id):
-
     inscricao = get_object_or_404(Inscricoes, pk=id, user=request.user)
-
     if request.method == "POST":
         inscricao.delete()
         messages.success(request, "SUCESSO: Inscrição deletada com sucesso.")
@@ -113,7 +104,6 @@ def detalhe_incricao(request, id):
     return render(request, 'inscricoes_details.html', context )
 
 # # Pagamentos
-
 def add_pagamento(request, id):
     form = PagamentoForm()
     context = {
@@ -135,9 +125,6 @@ def add_pagamento(request, id):
         else:
             messages.error(request, "ERRO: Ocorreu um erro ao registrar pagamento")
     return render(request, 'forms_pgto.html', context )
-
-def pagamento_edit(request, id):
-    pass
 
 def pagamento_delete(request, id):
     pagamento = get_object_or_404(Pagamento, pk=id)

@@ -12,6 +12,7 @@ from core.forms import UserForm
 from user_profile.models import UserProfile
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import logout
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 
 class UserCreate(CreateView):
     template_name = 'partials/forms.html'
