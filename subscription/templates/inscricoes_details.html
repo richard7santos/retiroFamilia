@@ -80,11 +80,18 @@
                     <td>{{ p.data_pagamento }}</td>
                     <td>R$ {{ p.valor }}</td>
                     <td><a href=" {{ p.comprovante_pagamento.url }}" target="_blank">Visualizar comprovante</a> </td>
-                    <td><a href="{% url 'pagamento_edit' p.id %}"><i class="bi bi-pencil m-2"
-                                style="font-size: 1.5rem; color: #3532f0;"></i></a>
+                    <td>
+                        {% if p.status == 'Aprovado'%}
+                        <a href="{{ p.comprovante_pagamento.url }}"><i title="Pagamento aprovado"
+                                class="bi bi-check-circle-fill" style="font-size: 1.5rem; color: #049e04;"></i></a>
 
-                        <a href="{% url 'pagamento_delete' p.id %}"><i class="bi bi-trash3-fill"
-                                style="font-size: 1.5rem; color: #f10808;"></i></a>
+                        {% elif p.status == 'Pendente de conferência' %}
+                        <a href="{% url 'pagamento_delete' p.id %}"><i title="Pendente a Conferência"
+                                class="bi bi-check2-square" style="font-size: 1.5rem; color: rgb(49, 48, 48);"></i></a>
+                        {% elif p.status == 'Reprovado' %}
+                        <a href="{% url 'pagamento_delete' p.id %}"><i title="Pagamento não localizado"
+                                class="bi bi-x-octagon-fill" style="font-size: 1.5rem; color: #f10808;"></i></a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
@@ -95,9 +102,9 @@
                 <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
                 <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
                 {% if total_pago >= inscricao.valor_inscricao %}
-                <h1 class="display-6 pago"> Total pago: {{total_pago }}</h1>
+                <h1 class="display-6 pago"> Total pago: {{inscricao.total_pago }}</h1>
                 {% else %}
-                <h1 class="display-6 a_pagar"> Total pago: {{total_pago }}</h1>
+                <h1 class="display-6 a_pagar"> Total pago: {{inscricao.total_pago }}</h1>
                 {% endif %}
             </div>
             <div>
@@ -116,9 +123,9 @@
                 <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
                 {% if total_pago > 0 %}
                 {% if total_pago >= inscricao.valor_inscricao %}
-                <h1 class="display-6 pago"> Total pago: {{total_pago }}</h1>
+                <h1 class="display-6 pago"> Total pago: {{inscricao.total_pago }}</h1>
                 {% else %}
-                <h1 class="display-6 a_pagar"> Total pago: {{total_pago }}</h1>
+                <h1 class="display-6 a_pagar"> Total pago: {{inscricao.total_pago }}</h1>
                 {% endif %}
                 {% endif %}
             </div>
