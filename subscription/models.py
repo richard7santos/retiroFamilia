@@ -60,7 +60,7 @@ class Pagamento(models.Model):
     data_registro= models.DateTimeField(default=timezone.now, blank=True, null=True)
     data_pagamento = models.CharField(max_length=12)
     valor = models.DecimalField(max_digits=6, decimal_places=2)
-    comprovante_pagamento = models.FileField(upload_to ='uploads/')
+    comprovante_pagamento = models.FileField(upload_to ='comprovantes/')
     STATUS_CHOICES = (
         ("Aprovado", "Aprovado"),
         ("Pendente de conferência", "Pendente de conferência"),
