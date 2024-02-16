@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     nome_completo = models.CharField(max_length=50, null=True)
     telefone = models.CharField(max_length=16, null=True)
-    foto = models.ImageField(null=True, blank=True, verbose_name='Imagem')
+    foto = models.ImageField(upload_to ='user_photos/',null=True, blank=True, verbose_name='Imagem')
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     
     def __str__(self):
