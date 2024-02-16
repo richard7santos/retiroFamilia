@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
+from django.db.models.aggregates import  Sum
 
 
 class Inscricoes(models.Model):
@@ -78,16 +79,19 @@ class Pagamento(models.Model):
         verbose_name_plural = 'Pagamentos'
 
 def atualiza_total_pago(sender, instance, created, **kwargs):
-    pgto = instance.valor
-    valor_total = instance.inscricao.total_pago
-    status = instance.status
+    pagamentos = Pagamento.objects.filter(inscricao=instance.inscricao)
+    qtd_pgtos = len(pagamentos)
 
-    if status == 'Aprovado':
-        instance.inscricao.total_pago = valor_total + pgto
+    if (qtd_pgtos != 0):
+        total_pago = Pagamento.objects.filter(inscricao=instance.inscricao, status='Aprovado').aggregate(total=Sum('valor'))
+        total_pago = total_pago['total']
+        if total_pago:
+            instance.inscricao.total_pago =float(total_pago)
+            print('Passei no if e atualizei o valor')
+        else:
+            instance.inscricao.total_pago = 0.0
+            print('Passei no else e zerei')
         instance.inscricao.save()
-
-
-    print(instance.inscricao.total_pago)
-    
+        
 
 post_save.connect(atualiza_total_pago, sender=Pagamento)
