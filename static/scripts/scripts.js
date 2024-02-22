@@ -59,6 +59,8 @@ $(document).ready( function () {
     $("#id_password").attr("placeholder", "Informe sua senha");
     $("#id_password1").attr("placeholder", "Escolha uma senha segura");
     $("#id_password2").attr("placeholder", "Repita a sua senha segura");
+    $('#id_valor').mask("0000.00", {reverse: true, placeholder: "000,00"});
+    $('#id_telefone').mask('(00) 00000-0000', {placeholder: "(xx) xxxxx-xxxxx"});
     $('#id_telefone_1').mask('(00) 00000-0000', {placeholder: "(xx) xxxxx-xxxxx"});
     $('#id_telefone_2').mask('(00) 00000-0000', {placeholder: "(xx) xxxxx-xxxxx"});
     $('#id_cep').mask('00000-000', {placeholder: "xxxxx-xxx"});
