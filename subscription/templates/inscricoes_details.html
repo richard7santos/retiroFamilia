@@ -97,8 +97,8 @@
                 {% endfor %}
             </tbody>
         </table>
-        <div class="mt-5 d-flex justify-content-between">
-            <div>
+        <div class=" row mt-5 d-flex justify-content-between">
+            <div class="col-sm-6">
                 <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
                 <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
                 {% if total_pago >= inscricao.valor_inscricao %}
@@ -107,7 +107,7 @@
                 <h1 class="display-6 a_pagar"> Total pago: {{inscricao.total_pago }}</h1>
                 {% endif %}
             </div>
-            <div>
+            <div class="col-sm-6">
                 <a href="{% url 'incricoes_pagar' inscricao.id %}" class="btn btn-success"><i class="bi bi-coin"
                         style="font-size: 1.5rem; color: #f1f2f6;">Registrar novo pagamento</i></a>
             </div>
@@ -117,8 +117,9 @@
         <h3 class="display-6 a_pagar">Nenhum pagamento registrado</h3>
         <hr class="my-4">
 
-        <div class="mt-5 d-flex justify-content-between">
-            <div>
+        <div class="row mt-5 d-flex justify-content-between">
+            <div class="col-sm-6">
+
                 <p class="lead"><b>Valor da Inscrição: </b>R$ {{inscricao.valor_inscricao }} </p>
                 <p class="lead"><b>Forma de Pagamento: </b> {{inscricao.status }} </p>
                 {% if total_pago > 0 %}
@@ -128,8 +129,9 @@
                 <h1 class="display-6 a_pagar"> Total pago: {{inscricao.total_pago }}</h1>
                 {% endif %}
                 {% endif %}
+
             </div>
-            <div>
+            <div class="col-sm-6">
                 <a href="{% url 'incricoes_pagar' inscricao.id %}" class="btn btn-success"><i class="bi bi-coin"
                         style="font-size: 1.5rem; color: #f1f2f6;">Registrar primeiro pagamento</i></a>
             </div>
